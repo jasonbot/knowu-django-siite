@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Summary</h1>
+
+{% regroup states|dictsort:"state_name" by state_name as region_list %}
+
+<table class="pure-table pure-table-bordered pure-table-striped">
+    <tbody>
+{% for state in region_list %}
+    <tr>
+        <td colspan="5" class="header_row">
+            <b id="{{ state.grouper }}"> {{ state.grouper }} </b>
+        </td>
+    </tr>
+    <tr class="label_row">
+        <th>
+            State name
+        </th>
+        <th>
+            County name
+        </th>
+        <th>
+            Metro name
+        </th>
+        <th>
+            URL
+        </th>
+        <th>
+            Location
+        </th>
+    </tr>
+    {% for item in state.list|dictsort:"name" %}
+        <tr>
+            <td>
+                {{ item.state_name }}
+            </td>
+            <td>
+                {% if item.county_name %}
+                    {{ item.county_name }}
+                {% else %}
+                    {{ item.name }}
+                {% endif %}
+            </td>
+            <td>
+                {% if item.county_name %}
+                    {{ item.name }}
+                {% endif %}
+            </td>
+            <td>
+                {% if item.url %}
+                    (<a href="{{ item.url }}">Website</a>)
+                {% endif %}
+            </td>
+            <td>
+                {% if item.primary_latitude and item.primary_longitude %}
+                    <a href="http://www.google.com/maps/place/{{ item.primary_latitude }},{{ item.primary_longitude }}">
+                        {{ item.primary_latitude }}, {{ item.primary_longitude }}
+                    </a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
