@@ -1,6 +1,6 @@
 #! python
 
-__all__ = ['home']
+__all__ = ['index', 'home']
 
 import os
 import json
@@ -21,6 +21,9 @@ def check_state_data():
             STATE_DATA = []
             for item in json.load(summary_file).itervalues():
                 STATE_DATA.extend(item)
+
+def index(request):
+    return render(request, "index.html")
 
 @login_required
 def home(request):

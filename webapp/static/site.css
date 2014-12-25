@@ -8,6 +8,26 @@ body {
     color: rgb(30, 30, 30);
 }
 
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a, a:hover, a:visited {
+    color: rgb(30, 30, 30);
+}
+
+#header {
+    color: white;
+    background: rgb(64, 114, 222);
+    font-size: small;
+    text-align: right;
+    padding: 1em;
+}
+
+#header a {
+    color: white;
+}
+
 #content {
     margin: 1em;
     background: white;
@@ -16,12 +36,15 @@ body {
     padding: 4px;
 }
 
-.header_row {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 40%;
+.locality_name {
+    font-size: larger;
 }
 
-.label_row {
-    background: rgb(155, 155, 155);
+.county_name {
+    font-size: x-small;
+}
+
+.item_row {
+    padding: 8px;
+    border-top: 1px solid rgb(190, 200, 220);
 }
