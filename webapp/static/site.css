@@ -16,6 +16,11 @@ a, a:hover, a:visited {
     color: rgb(30, 30, 30);
 }
 
+h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
 #header {
     color: white;
     background: rgb(64, 114, 222);
