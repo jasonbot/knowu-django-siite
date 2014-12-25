@@ -6,64 +6,37 @@
 
 {% regroup states|dictsort:"state_name" by state_name as region_list %}
 
-<table class="pure-table pure-table-bordered pure-table-striped">
-    <tbody>
 {% for state in region_list %}
-    <tr>
-        <td colspan="5" class="header_row">
-            <b id="{{ state.grouper }}"> {{ state.grouper }} </b>
-        </td>
-    </tr>
-    <tr class="label_row">
-        <th>
-            State name
-        </th>
-        <th>
-            County name
-        </th>
-        <th>
-            Metro name
-        </th>
-        <th>
-            URL
-        </th>
-        <th>
-            Location
-        </th>
-    </tr>
+    <h2>{{ state.grouper }}</h2>
     {% for item in state.list|dictsort:"name" %}
-        <tr>
-            <td>
-                {{ item.state_name }}
-            </td>
-            <td>
-                {% if item.county_name %}
-                    {{ item.county_name }}
-                {% else %}
-                    {{ item.name }}
-                {% endif %}
-            </td>
-            <td>
-                {% if item.county_name %}
-                    {{ item.name }}
-                {% endif %}
-            </td>
-            <td>
+        <div class="pure-g item_row">
+            <div class="pure-u-1 pure-u-md-3-5">
+                <span class="locality_name">
+                    {% if item.county_name %}
+                        {{ item.name }}
+                    {% else %}
+                        {% if item.name %}
+                            {{ item.name }}
+                        {% else %}
+                            {{ item }}
+                        {% endif %}
+                    {% endif %}
+                </span>
+            </div>
+            <div class="pure-u-2-5 pure-u-md-1-5">
                 {% if item.url %}
                     (<a href="{{ item.url }}">Website</a>)
                 {% endif %}
-            </td>
-            <td>
+            </div>
+            <div class="pure-u-3-5 pure-u-md-1-5">
                 {% if item.primary_latitude and item.primary_longitude %}
                     <a href="http://www.google.com/maps/place/{{ item.primary_latitude }},{{ item.primary_longitude }}">
                         {{ item.primary_latitude }}, {{ item.primary_longitude }}
                     </a>
                 {% endif %}
-            </td>
-        </tr>
+            </div>
+        </div>
     {% endfor %}
 {% endfor %}
-    </tbody>
-</table>
 
 {% endblock %}
