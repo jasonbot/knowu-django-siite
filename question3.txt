@@ -1,0 +1,30 @@
+QUESTION #3
+===========
+
+This is a trick question, but there is a correct answer.  The intended
+audience of the question is actually kindergartners.
+
+Complete the sequence...
+
+0091 = 3
+0113 = 1
+9999 = 4
+8600 = 5
+6712 = 1
+1115 = 0
+8811 = 4
+4334 = 0
+1001 = 2
+
+6811 = 3
+
+Solution: each number maps to the total number of "loops" in its digits. So it's the sum of mapping each digit thus:
+0 = 1
+1 = 0
+2 = 0
+3 = 0
+4 = 0
+5 = 0
+6 = 1
+7 = 0
+8 = 2
